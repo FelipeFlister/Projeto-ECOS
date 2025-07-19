@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=4 uid="uid://b0hdf4n2mxuyp"]
+
+[ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/terrain_manager.tscn" id="1_jtjkd"]
+[ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/pawn.tscn" id="2_ht4rx"]
+[ext_resource type="Texture2D" uid="uid://d25wqn0d1sjif" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="3_ht4rx"]
+[ext_resource type="Script" uid="uid://tscwqkdhnq18" path="res://Scenes/bridge_area.gd" id="4_u7uub"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
+texture = ExtResource("3_ht4rx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -32, 32, -32, 32, -16, -16, -16)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, 32, -16, 16, 32, 16, 32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, -32, -16, 32, -16)
+1:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(32, 32, 32, 16, -32, 16, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -32, -32, -32, -32, -16, 16, -16)
+2:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, 32, 16, 16, -32, 16, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_6mi8o"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_u7uub")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mi8o"]
+size = Vector2(1070, 32)
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="TerrainManager" parent="." instance=ExtResource("1_jtjkd")]
+
+[node name="Pawn" parent="." instance=ExtResource("2_ht4rx")]
+position = Vector2(6320, 2852)
+
+[node name="Bridge" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAB0ACwAAAACAAAAAABkACwAAAABAAAAAABlACwAAAABAAAAAABmACwAAAABAAAAAABnACwAAAABAAAAAABoACwAAAABAAAAAABpACwAAAABAAAAAABqACwAAAABAAAAAABrACwAAAABAAAAAABsACwAAAABAAAAAABtACwAAAABAAAAAABuACwAAAABAAAAAABvACwAAAABAAAAAABwACwAAAABAAAAAABxACwAAAABAAAAAAByACwAAAABAAAAAABzACwAAAABAAAAAABjACwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6mi8o")
+collision_visibility_mode = 1
+
+[node name="BridgeArea" type="Area2D" parent="Bridge"]
+position = Vector2(6395, 2845)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("4_u7uub")
+
+[node name="Collision" type="CollisionShape2D" parent="Bridge/BridgeArea"]
+position = Vector2(517, 3)
+shape = SubResource("RectangleShape2D_6mi8o")
+
+[connection signal="body_entered" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_exited"]

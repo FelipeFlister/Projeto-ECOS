@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://21xatexh8no4"]
+
+[ext_resource type="PackedScene" uid="uid://xu88jn1xegur" path="res://Scenes/Decorations/decoration_component.tscn" id="1_ehhgv"]
+[ext_resource type="Texture2D" uid="uid://dxhydfddxyebx" path="res://Assets/Deco/16.png" id="2_6v0hw"]
+[ext_resource type="Script" uid="uid://8fq3v67aofyv" path="res://Scripts/Decorations/decoration_sign.gd" id="2_qs5gc"]
+[ext_resource type="Texture2D" uid="uid://mpvuiugxq3fn" path="res://Assets/Deco/17.png" id="3_qs5gc"]
+[ext_resource type="Texture2D" uid="uid://cv3mxmoyisgvt" path="res://Assets/Deco/18.png" id="4_cb5rj"]
+
+[node name="Sign" instance=ExtResource("1_ehhgv")]
+script = ExtResource("2_qs5gc")
+texture_list = Array[Texture2D]([ExtResource("2_6v0hw"), ExtResource("3_qs5gc"), ExtResource("4_cb5rj")])
+
+[node name="Texture1" parent="." index="0"]
+position = Vector2(0, -64)
+
+[node name="Texture2" parent="." index="1"]
+visible = false
+
+[node name="Texture3" parent="." index="2"]
+visible = false

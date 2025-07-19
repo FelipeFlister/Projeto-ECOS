@@ -1,0 +1,8 @@
+[gd_scene load_steps=4 format=3 uid="uid://2pcbv7g8ggpg"]
+
+[ext_resource type="PackedScene" uid="uid://xu88jn1xegur" path="res://Scenes/Decorations/decoration_component.tscn" id="1_6tg5g"]
+[ext_resource type="Texture2D" uid="uid://3vil7a7wo0t6" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/14.png" id="2_cn55h"]
+[ext_resource type="Texture2D" uid="uid://bnsplrd8v73hr" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/15.png" id="3_ukxdl"]
+
+[node name="Bones" instance=ExtResource("1_6tg5g")]
+texture_list = Array[Texture2D]([ExtResource("2_cn55h"), ExtResource("3_ukxdl")])

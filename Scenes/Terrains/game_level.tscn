@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=4 uid="uid://b0hdf4n2mxuyp"]
+
+[ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrains/terrain_manager.tscn" id="1_jtjkd"]
+[ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Characters/pawn.tscn" id="2_ht4rx"]
+[ext_resource type="Texture2D" uid="uid://d25wqn0d1sjif" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="3_ht4rx"]
+[ext_resource type="Script" uid="uid://tscwqkdhnq18" path="res://Scripts/Interactables/bridge_area.gd" id="4_u7uub"]
+[ext_resource type="PackedScene" uid="uid://bq7l377bq3tam" path="res://Scenes/Interactables/ladder_area.tscn" id="5_6mi8o"]
+[ext_resource type="PackedScene" uid="uid://dg1pxcu5ytet3" path="res://Scenes/Decorations/Mushroons/mushroom.tscn" id="5_mql7d"]
+[ext_resource type="PackedScene" uid="uid://21xatexh8no4" path="res://Scenes/Decorations/Signs/sign.tscn" id="6_rtpf6"]
+[ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Decorations/Trees/tree.tscn" id="7_ynqm7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
+texture = ExtResource("3_ht4rx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -32, 32, -32, 32, -16, -16, -16)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, 32, -16, 16, 32, 16, 32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, -32, -16, 32, -16)
+1:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(32, 32, 32, 16, -32, 16, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -32, -32, -32, -32, -16, 16, -16)
+2:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, 32, 16, 16, -32, 16, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_6mi8o"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_u7uub")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mi8o"]
+size = Vector2(1070, 32)
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="TerrainManager" parent="." instance=ExtResource("1_jtjkd")]
+
+[node name="Bridge" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAB0ACwAAAACAAAAAABkACwAAAABAAAAAABlACwAAAABAAAAAABmACwAAAABAAAAAABnACwAAAABAAAAAABoACwAAAABAAAAAABpACwAAAABAAAAAABqACwAAAABAAAAAABrACwAAAABAAAAAABsACwAAAABAAAAAABtACwAAAABAAAAAABuACwAAAABAAAAAABvACwAAAABAAAAAABwACwAAAABAAAAAABxACwAAAABAAAAAAByACwAAAABAAAAAABzACwAAAABAAAAAABjACwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6mi8o")
+
+[node name="BridgeArea" type="Area2D" parent="Bridge"]
+position = Vector2(6395, 2845)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("4_u7uub")
+
+[node name="Collision" type="CollisionShape2D" parent="Bridge/BridgeArea"]
+position = Vector2(517, 3)
+shape = SubResource("RectangleShape2D_6mi8o")
+
+[node name="Decorations" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pawn" parent="Decorations" node_paths=PackedStringArray("bridge") instance=ExtResource("2_ht4rx")]
+position = Vector2(6547, 2857)
+move_speed = 300.0
+bridge = NodePath("../../Bridge")
+
+[node name="Mushroom" parent="Decorations" instance=ExtResource("5_mql7d")]
+position = Vector2(5632, 3008)
+
+[node name="Mushroom2" parent="Decorations" instance=ExtResource("5_mql7d")]
+position = Vector2(5184, 2816)
+
+[node name="Sign" parent="Decorations" instance=ExtResource("6_rtpf6")]
+position = Vector2(5370, 3097)
+
+[node name="Sign2" parent="Decorations" instance=ExtResource("6_rtpf6")]
+position = Vector2(5120, 3085)
+
+[node name="Tree" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(4750, 2791)
+
+[node name="Tree2" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5331, 2604)
+
+[node name="Tree3" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5671, 3162)
+
+[node name="Tree4" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(4838, 3204)
+
+[node name="Tree5" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(4978, 2976)
+
+[node name="Tree6" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5237, 3202)
+
+[node name="Tree7" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5459, 2914)
+
+[node name="Tree8" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(6037, 2618)
+
+[node name="Tree9" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5793, 2452)
+
+[node name="Tree10" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(5217, 2361)
+
+[node name="Tree11" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(4885, 2314)
+
+[node name="Tree12" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(6008, 3040)
+
+[node name="Tree13" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(6174, 2835)
+
+[node name="Tree14" parent="Decorations" instance=ExtResource("7_ynqm7")]
+position = Vector2(6135, 2373)
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="LadderArea" parent="Ladders" instance=ExtResource("5_6mi8o")]
+position = Vector2(5486, 3343)
+
+[node name="LadderArea2" parent="Ladders" instance=ExtResource("5_6mi8o")]
+position = Vector2(7735, 2960)
+scale = Vector2(5.06257, 1.25154)
+
+[connection signal="body_entered" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_exited"]

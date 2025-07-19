@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg1pxcu5ytet3"]
+
+[ext_resource type="PackedScene" uid="uid://xu88jn1xegur" path="res://Scenes/Decorations/decoration_component.tscn" id="1_2r5i3"]
+[ext_resource type="Texture2D" uid="uid://dtmuu11nad28u" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/01.png" id="2_4cpjm"]
+[ext_resource type="Texture2D" uid="uid://cdqruasfo85o2" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/02.png" id="3_xxe8m"]
+[ext_resource type="Texture2D" uid="uid://btlb3h0xc51uq" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/03.png" id="4_3jwlh"]
+
+[node name="Mushroom" instance=ExtResource("1_2r5i3")]
+position = Vector2(36, 28)
+texture_list = Array[Texture2D]([ExtResource("2_4cpjm"), ExtResource("3_xxe8m"), ExtResource("4_3jwlh")])

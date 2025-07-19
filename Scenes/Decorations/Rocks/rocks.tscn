@@ -1,0 +1,9 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlaq8mfmnglod"]
+
+[ext_resource type="PackedScene" uid="uid://xu88jn1xegur" path="res://Scenes/Decorations/decoration_component.tscn" id="1_cv083"]
+[ext_resource type="Texture2D" uid="uid://vr040qo3i3xl" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/04.png" id="2_belip"]
+[ext_resource type="Texture2D" uid="uid://clp7qfm6pya62" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/05.png" id="3_eu3t6"]
+[ext_resource type="Texture2D" uid="uid://bnrfnpn6fc1or" path="res://Assets/Origin/Tiny Swords (Update 010)/Deco/06.png" id="4_oxjm8"]
+
+[node name="Rocks" instance=ExtResource("1_cv083")]
+texture_list = Array[Texture2D]([ExtResource("2_belip"), ExtResource("3_eu3t6"), ExtResource("4_oxjm8")])

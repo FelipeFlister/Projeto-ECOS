@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8kxrvs7bvmss"]
+
+[ext_resource type="Script" uid="uid://cd683rk6y57bc" path="res://Scripts/Characters/base_character.gd" id="1_e1028"]
+
+[node name="base_character" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_e1028")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_player_animation_finished"]
