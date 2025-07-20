@@ -144,6 +144,8 @@ radius = 64.0
 move_speed = 192.0
 left_action_name = "attack_hammer"
 right_action_name = "attack_axe"
+min_attack = 10
+max_attack = 30
 sprite = NodePath("Sprite2D")
 action_area_collision = NodePath("ActionArea/Collision")
 
