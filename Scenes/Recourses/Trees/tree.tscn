@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4ke5vc4s5lle"]
+[gd_scene load_steps=9 format=3 uid="uid://b4ke5vc4s5lle"]
 
 [ext_resource type="Texture2D" uid="uid://cvj1qkpkjbl02" path="res://Assets/Resources/Trees/Tree.png" id="1_icldt"]
+[ext_resource type="Script" uid="uid://p1mak7tne8oo" path="res://Scenes/Recourses/Trees/tree.gd" id="1_lwtq8"]
 
 [sub_resource type="Animation" id="Animation_n5xhu"]
 length = 0.001
@@ -55,7 +56,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ka8mg"]
 resource_name = "kill"
 length = 0.1
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -81,7 +81,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icldt"]
 size = Vector2(64, 64)
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("animation")]
+script = ExtResource("1_lwtq8")
+animation = NodePath("Animation")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(-64, -128)
@@ -99,3 +101,5 @@ autoplay = "idle"
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_icldt")
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

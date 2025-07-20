@@ -5,11 +5,14 @@ class_name BaseCharacter
 @export var move_speed: float = 128.0
 @export var left_action_name: String = ""
 @export var right_action_name: String = ""
+@export var min_attack: int = 1
+@export var max_attack: int = 5
 
 @export_category("Objects")
 @export var animation: AnimationPlayer #Serve para permitir o jogador executar e parar animações
 @export var sprite: Sprite2D #Serve para o jogador inverter o seu personagem
 @export var bridge: TileMapLayer #Serve para deixar a ponte em cima ou embaixo do jogador, quando ele passar
+@export var action_area_collision: CollisionShape2D #Muda a direção dessa colisão de acordo com a rotação do jogador
 
 var can_attack: bool = true #Variável para bloquear ou permitir o jogador de atacar
 var action_animation_name: String = "" #Serve para executar a animação com o mesmo nome que está variável tiver
@@ -40,8 +43,10 @@ func action() -> void:
 func animate() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
+		action_area_collision.position.x = 64 #Inverte a colisão da ação
 	elif velocity.x < 0:
 		sprite.flip_h = true
+		action_area_collision.position.x = -64
 	if can_attack == false:
 		animation.play(action_animation_name)
 		return
@@ -69,7 +74,6 @@ func update_collision_layer_mask(type: String) -> void:
 		
 		set_collision_mask_value(1, true)
 		set_collision_mask_value(2, false)
-	pass
 func update_mountain_state(state: bool) -> void:
 	is_in_moutain = state
 	if is_in_moutain == false: #Deixa a ponte em cima do jogador
@@ -78,3 +82,7 @@ func update_mountain_state(state: bool) -> void:
 		bridge.z_index = 0
 func get_is_in_mountain() -> bool:
 	return is_in_moutain
+#Parte da ação do jogador com outros objetos
+func _on_action_area_body_entered(body: Node2D) -> void:
+	if body is WorldTree:
+		body.update_health([min_attack, max_attack])

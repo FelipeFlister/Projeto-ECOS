@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=4 uid="uid://b0hdf4n2mxuyp"]
 
-[ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrains/terrain_manager.tscn" id="1_jtjkd"]
-[ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Characters/pawn.tscn" id="2_ht4rx"]
+[ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrain/terrain_manager.tscn" id="1_jtjkd"]
+[ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Factions/pawn.tscn" id="2_ht4rx"]
 [ext_resource type="Texture2D" uid="uid://d25wqn0d1sjif" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="3_ht4rx"]
 [ext_resource type="Script" uid="uid://tscwqkdhnq18" path="res://Scripts/Interactables/bridge_area.gd" id="4_u7uub"]
 [ext_resource type="PackedScene" uid="uid://bq7l377bq3tam" path="res://Scenes/Interactables/ladder_area.tscn" id="5_6mi8o"]
 [ext_resource type="PackedScene" uid="uid://dg1pxcu5ytet3" path="res://Scenes/Decorations/Mushroons/mushroom.tscn" id="5_mql7d"]
 [ext_resource type="PackedScene" uid="uid://21xatexh8no4" path="res://Scenes/Decorations/Signs/sign.tscn" id="6_rtpf6"]
-[ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Decorations/Trees/tree.tscn" id="7_ynqm7"]
+[ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Recourses/Trees/tree.tscn" id="7_ynqm7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
 texture = ExtResource("3_ht4rx")
@@ -36,6 +36,7 @@ size = Vector2(1070, 32)
 [node name="TerrainManager" parent="." instance=ExtResource("1_jtjkd")]
 
 [node name="Bridge" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAB0ACwAAAACAAAAAABkACwAAAABAAAAAABlACwAAAABAAAAAABmACwAAAABAAAAAABnACwAAAABAAAAAABoACwAAAABAAAAAABpACwAAAABAAAAAABqACwAAAABAAAAAABrACwAAAABAAAAAABsACwAAAABAAAAAABtACwAAAABAAAAAABuACwAAAABAAAAAABvACwAAAABAAAAAABwACwAAAABAAAAAABxACwAAAABAAAAAAByACwAAAABAAAAAABzACwAAAABAAAAAABjACwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_6mi8o")
 
