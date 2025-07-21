@@ -79,9 +79,13 @@ func update_health(damage_range: Array) -> void:
 		queue_free()
 		spawn_meat()
 		return
-	#Se a ovelha receber dano ela fica mais rápida por um tempo		
+	#Se a ovelha receber dano ela fica mais rápida por um tempo	
 	direction = get_direction()
-	move_speed *= 3
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT  # direção padrão (ou aleatória não nula)
+
+		
+	move_speed = 192
 	run_timer.start(run_wait_time)
 	
 func spawn_meat() -> void:

@@ -5,7 +5,6 @@
 [node name="base_character" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
 collision_layer = 9
 collision_mask = 9
-platform_on_leave = 2
 script = ExtResource("1_e1028")
 animation = NodePath("AnimationPlayer")
 

@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name BaseCharacter
 
 @export_category("Variables")
-@export var move_speed: float = 128.0
+@export var move_speed: float = 200.0
+@export var run_speed: float = 500.0
 @export var left_action_name: String = ""
 @export var right_action_name: String = ""
 @export var min_attack: int = 1
@@ -14,11 +15,13 @@ class_name BaseCharacter
 @export var bridge: TileMapLayer #Serve para deixar a ponte em cima ou embaixo do jogador, quando ele passar
 @export var action_area_collision: CollisionShape2D #Muda a direção dessa colisão de acordo com a rotação do jogador
 
+var current_speed: float
 var can_attack: bool = true #Variável para bloquear ou permitir o jogador de atacar
 var action_animation_name: String = "" #Serve para executar a animação com o mesmo nome que está variável tiver
 var is_in_moutain: bool = false #Verifica se o jogador está na montanha, camada 1, chão 0
 
 func _ready() -> void:
+	current_speed = move_speed
 	update_mountain_state(is_in_moutain) #Já prepara a visibilidade da ponte e do jogador, para não dar bugs
 	
 func _physics_process(delta: float) -> void:
@@ -27,9 +30,17 @@ func _physics_process(delta: float) -> void:
 	animate()	
 	
 #Ações do jogador
+
+	
 func move() -> void:
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * move_speed
+	# Ajusta velocidade dependendo do botão de correr
+	current_speed = Input.is_action_pressed("ui_run") if run_speed else move_speed
+	if Input.is_action_pressed("ui_run"): 
+		current_speed = run_speed
+	else: 
+		current_speed = move_speed
+	velocity = direction * current_speed
 	move_and_slide()
 	
 func action() -> void:

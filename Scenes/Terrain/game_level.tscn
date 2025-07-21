@@ -56,7 +56,6 @@ y_sort_enabled = true
 
 [node name="Pawn" parent="Decorations" node_paths=PackedStringArray("bridge") instance=ExtResource("2_ht4rx")]
 position = Vector2(6547, 2857)
-platform_on_leave = 0
 min_attack = 1
 max_attack = 5
 bridge = NodePath("../../Bridge")
