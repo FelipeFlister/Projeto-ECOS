@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0hdf4n2mxuyp"]
+[gd_scene load_steps=13 format=4 uid="uid://b0hdf4n2mxuyp"]
 
 [ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrain/terrain_manager.tscn" id="1_jtjkd"]
 [ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Factions/pawn.tscn" id="2_ht4rx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dg1pxcu5ytet3" path="res://Scenes/Decorations/Mushroons/mushroom.tscn" id="5_mql7d"]
 [ext_resource type="PackedScene" uid="uid://21xatexh8no4" path="res://Scenes/Decorations/Signs/sign.tscn" id="6_rtpf6"]
 [ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Recourses/Trees/tree.tscn" id="7_ynqm7"]
+[ext_resource type="PackedScene" uid="uid://1suiyah8nuvq" path="res://Scenes/Interactables/sheep.tscn" id="8_udf4a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
 texture = ExtResource("3_ht4rx")
@@ -55,7 +56,9 @@ y_sort_enabled = true
 
 [node name="Pawn" parent="Decorations" node_paths=PackedStringArray("bridge") instance=ExtResource("2_ht4rx")]
 position = Vector2(6547, 2857)
-move_speed = 300.0
+platform_on_leave = 0
+min_attack = 1
+max_attack = 5
 bridge = NodePath("../../Bridge")
 
 [node name="Mushroom" parent="Decorations" instance=ExtResource("5_mql7d")]
@@ -111,6 +114,24 @@ position = Vector2(6174, 2835)
 
 [node name="Tree14" parent="Decorations" instance=ExtResource("7_ynqm7")]
 position = Vector2(6135, 2373)
+
+[node name="Sheep" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(6464, 3008)
+
+[node name="Sheep2" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(6400, 3712)
+
+[node name="Sheep3" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(8320, 2816)
+
+[node name="Sheep4" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(4800, 2624)
+
+[node name="Sheep5" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(5952, 2496)
+
+[node name="Sheep6" parent="Decorations" instance=ExtResource("8_udf4a")]
+position = Vector2(5312, 3008)
 
 [node name="Ladders" type="Node2D" parent="."]
 

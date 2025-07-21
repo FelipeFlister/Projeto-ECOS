@@ -141,7 +141,7 @@ _data = {
 radius = 64.0
 
 [node name="Pawn" node_paths=PackedStringArray("sprite", "action_area_collision") instance=ExtResource("1_eu7ni")]
-move_speed = 192.0
+move_speed = 250.0
 left_action_name = "attack_hammer"
 right_action_name = "attack_axe"
 min_attack = 10

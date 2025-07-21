@@ -45,6 +45,7 @@ _data = {
 radius = 32.0
 
 [node name="Wood" instance=ExtResource("1_7c2dn")]
+item_texture = ExtResource("2_a0kn1")
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource("2_a0kn1")
@@ -57,4 +58,5 @@ libraries = {
 autoplay = "spawn"
 
 [node name="Collision" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_fg3cv")

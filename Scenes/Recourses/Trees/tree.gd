@@ -37,6 +37,7 @@ func update_health(damage_range: Array) -> void:
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hit":
 		animation.play("idle")
+		
 func spawn_wood() -> void:
 	var amount_of_spawned_wood: int = randi_range(min_amount_of_spawned_wood, max_amount_of_spawned_wood) #Aleatoriza um número de lenhas para ser spawnado
 	for i in amount_of_spawned_wood: #Vai spawnar as lenhas de acordo com a quantidade e em posições aleatórias

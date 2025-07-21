@@ -20,17 +20,18 @@ var is_in_moutain: bool = false #Verifica se o jogador está na montanha, camada
 
 func _ready() -> void:
 	update_mountain_state(is_in_moutain) #Já prepara a visibilidade da ponte e do jogador, para não dar bugs
-func _process(delta: float) -> void:
-	pass
+	
 func _physics_process(delta: float) -> void:
 	move()
 	action()
 	animate()	
+	
 #Ações do jogador
 func move() -> void:
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * move_speed
 	move_and_slide()
+	
 func action() -> void:
 	if Input.is_action_just_pressed("ui_left_action") and can_attack:
 		can_attack = false
@@ -40,6 +41,7 @@ func action() -> void:
 		can_attack = false
 		action_animation_name = right_action_name
 		set_physics_process(false)
+		
 func animate() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
@@ -54,10 +56,12 @@ func animate() -> void:
 		animation.play("running")
 		return
 	animation.play("idle")
+	
 func _on_player_animation_finished(anim_name: StringName) -> void: #Permite o jogador andar, quando terminar a animação
 	if action_animation_name == "attack_axe" or action_animation_name == "attack_hammer":
 		can_attack = true
 		set_physics_process(true)
+		
 #Parte de atravessar a ponte		
 func update_collision_layer_mask(type: String) -> void:
 	if type == "in":
@@ -74,15 +78,18 @@ func update_collision_layer_mask(type: String) -> void:
 		
 		set_collision_mask_value(1, true)
 		set_collision_mask_value(2, false)
+		
 func update_mountain_state(state: bool) -> void:
 	is_in_moutain = state
 	if is_in_moutain == false: #Deixa a ponte em cima do jogador
 		bridge.z_index = 1
 	else: #Deixa a ponte embaixo do jogador
 		bridge.z_index = 0
+		
 func get_is_in_mountain() -> bool:
 	return is_in_moutain
+	
 #Parte da ação do jogador com outros objetos
 func _on_action_area_body_entered(body: Node2D) -> void:
-	if body is WorldTree:
+	if (body is WorldTree or body is Sheep):
 		body.update_health([min_attack, max_attack])
