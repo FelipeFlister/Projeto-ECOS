@@ -104,3 +104,6 @@ func get_is_in_mountain() -> bool:
 func _on_action_area_body_entered(body: Node2D) -> void:
 	if (body is WorldTree or body is Sheep):
 		body.update_health([min_attack, max_attack])
+#Ele vai retornar se o jogador tem o item que precisa e a quantidade, fazer o resto da lógica
+func has_recourse(item_name: String, item_amount: int) -> bool:
+	return true

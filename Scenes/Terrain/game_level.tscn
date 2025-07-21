@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b0hdf4n2mxuyp"]
+[gd_scene load_steps=14 format=4 uid="uid://b0hdf4n2mxuyp"]
 
 [ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrain/terrain_manager.tscn" id="1_jtjkd"]
 [ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Factions/pawn.tscn" id="2_ht4rx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://21xatexh8no4" path="res://Scenes/Decorations/Signs/sign.tscn" id="6_rtpf6"]
 [ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Recourses/Trees/tree.tscn" id="7_ynqm7"]
 [ext_resource type="PackedScene" uid="uid://1suiyah8nuvq" path="res://Scenes/Interactables/sheep.tscn" id="8_udf4a"]
+[ext_resource type="PackedScene" uid="uid://d2oc743gvry3q" path="res://Scenes/Interactables/gold_mine.tscn" id="9_4asx4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
 texture = ExtResource("3_ht4rx")
@@ -55,7 +56,7 @@ shape = SubResource("RectangleShape2D_6mi8o")
 y_sort_enabled = true
 
 [node name="Pawn" parent="Decorations" node_paths=PackedStringArray("bridge") instance=ExtResource("2_ht4rx")]
-position = Vector2(6547, 2857)
+position = Vector2(5120, 3264)
 min_attack = 1
 max_attack = 5
 bridge = NodePath("../../Bridge")
@@ -131,6 +132,9 @@ position = Vector2(5952, 2496)
 
 [node name="Sheep6" parent="Decorations" instance=ExtResource("8_udf4a")]
 position = Vector2(5312, 3008)
+
+[node name="GoldMine" parent="Decorations" instance=ExtResource("9_4asx4")]
+position = Vector2(5120, 3136)
 
 [node name="Ladders" type="Node2D" parent="."]
 
