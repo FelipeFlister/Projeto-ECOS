@@ -12,6 +12,8 @@ var is_dead: bool = false
 @export var max_amount_of_spawned_wood: int = 5
 
 @export_category("Objects")
+@export var texture: Sprite2D
+@export var collision: CollisionShape2D
 @export var animation: AnimationPlayer
 
 func _ready() -> void:
@@ -28,7 +30,9 @@ func update_health(damage_range: Array) -> void:
 	)
 	if health <= 0:
 		is_dead = true
-		animation.play("kill")
+		animation.pause()
+		texture.frame = 8
+		collision.shape.size *= 0.5
 		spawn_wood()
 		return
 		
@@ -46,4 +50,4 @@ func spawn_wood() -> void:
 			randi_range(-32, 32), randi_range(-32, 32)
 		)
 		
-		get_tree().root.call_deferred("add_child", collectable_wood)
+		get_parent().call_deferred("add_child", collectable_wood)

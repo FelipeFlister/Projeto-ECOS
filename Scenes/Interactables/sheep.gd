@@ -96,7 +96,7 @@ func spawn_meat() -> void:
 			randi_range(-32, 32), randi_range(-32, 32)
 		)
 		
-		get_tree().root.call_deferred("add_child", collectable_wood)
+		get_parent().call_deferred("add_child", collectable_wood)
 
 func _on_run_timer_timeout() -> void:
 	move_speed = regular_move_speed

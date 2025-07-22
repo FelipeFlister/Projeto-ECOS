@@ -22,7 +22,7 @@ var is_in_moutain: bool = false #Verifica se o jogador está na montanha, camada
 
 func _ready() -> void:
 	current_speed = move_speed
-	update_mountain_state(is_in_moutain) #Já prepara a visibilidade da ponte e do jogador, para não dar bugs
+	#update_mountain_state(is_in_moutain) #Já prepara a visibilidade da ponte e do jogador, para não dar bugs
 	
 func _physics_process(delta: float) -> void:
 	move()
@@ -92,10 +92,10 @@ func update_collision_layer_mask(type: String) -> void:
 		
 func update_mountain_state(state: bool) -> void:
 	is_in_moutain = state
-	if is_in_moutain == false: #Deixa a ponte em cima do jogador
-		bridge.z_index = 1
+	if is_in_moutain == true: #Deixa a ponte em cima do jogador
+		z_index = 1
 	else: #Deixa a ponte embaixo do jogador
-		bridge.z_index = 0
+		z_index = 0
 		
 func get_is_in_mountain() -> bool:
 	return is_in_moutain

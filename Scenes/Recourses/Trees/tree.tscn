@@ -81,8 +81,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icldt"]
 size = Vector2(64, 64)
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("animation")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("texture", "collision", "animation")]
 script = ExtResource("1_lwtq8")
+texture = NodePath("Texture")
+collision = NodePath("Collision")
 animation = NodePath("Animation")
 
 [node name="Texture" type="Sprite2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b0hdf4n2mxuyp"]
+[gd_scene load_steps=15 format=4 uid="uid://b0hdf4n2mxuyp"]
 
 [ext_resource type="PackedScene" uid="uid://htp425hprxuo" path="res://Scenes/Terrain/terrain_manager.tscn" id="1_jtjkd"]
 [ext_resource type="PackedScene" uid="uid://b1uas12vynn5v" path="res://Scenes/Factions/pawn.tscn" id="2_ht4rx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ke5vc4s5lle" path="res://Scenes/Recourses/Trees/tree.tscn" id="7_ynqm7"]
 [ext_resource type="PackedScene" uid="uid://1suiyah8nuvq" path="res://Scenes/Interactables/sheep.tscn" id="8_udf4a"]
 [ext_resource type="PackedScene" uid="uid://d2oc743gvry3q" path="res://Scenes/Interactables/gold_mine.tscn" id="9_4asx4"]
+[ext_resource type="PackedScene" uid="uid://iffowk6b842a" path="res://Scenes/Interfaces/hud.tscn" id="11_lq1uj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7uub"]
 texture = ExtResource("3_ht4rx")
@@ -139,11 +140,17 @@ position = Vector2(5120, 3136)
 [node name="Ladders" type="Node2D" parent="."]
 
 [node name="LadderArea" parent="Ladders" instance=ExtResource("5_6mi8o")]
-position = Vector2(5486, 3343)
+position = Vector2(6363, 2638)
+scale = Vector2(2.5357, 1.27527)
 
 [node name="LadderArea2" parent="Ladders" instance=ExtResource("5_6mi8o")]
-position = Vector2(7735, 2960)
-scale = Vector2(5.06257, 1.25154)
+position = Vector2(7452, 2640)
+scale = Vector2(2.62724, 1.25154)
+
+[node name="HUD" parent="." instance=ExtResource("11_lq1uj")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.486275, 0.607843, 1, 1)
 
 [connection signal="body_entered" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Bridge/BridgeArea" to="Bridge/BridgeArea" method="_on_body_exited"]

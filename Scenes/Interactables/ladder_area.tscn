@@ -15,4 +15,5 @@ script = ExtResource("1_wt0jp")
 position = Vector2(1.79004, 13.3306)
 shape = SubResource("RectangleShape2D_u7uub")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

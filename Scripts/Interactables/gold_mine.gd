@@ -78,7 +78,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 func spawn_bag_of_gold() -> void:
 		var collectable_bag_of_gold: CollectableComponent = BAG_OF_GOLD_COLLECTABLE.instantiate()
-		get_tree().root.call_deferred("add_child", collectable_bag_of_gold)
+		get_parent().call_deferred("add_child", collectable_bag_of_gold)
 		collectable_bag_of_gold.global_position = global_position + Vector2(
 			randi_range(-80, 80), randi_range(64, 96)
 		)
