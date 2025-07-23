@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dto3pgdg652fp"
-path="res://.godot/imported/DestroySmoke.png-9b1407d28619b57a5ff29345b0368877.ctex"
+uid="uid://fq4m4h4ltmxt"
+path="res://.godot/imported/dungeon_entrance.png-8af089b4f91537764604f880d0433815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/DestroySmoke.png"
-dest_files=["res://.godot/imported/DestroySmoke.png-9b1407d28619b57a5ff29345b0368877.ctex"]
+source_file="res://Assets/Sprites/dungeon_entrance.png"
+dest_files=["res://.godot/imported/dungeon_entrance.png-8af089b4f91537764604f880d0433815.ctex"]
 
 [params]
 

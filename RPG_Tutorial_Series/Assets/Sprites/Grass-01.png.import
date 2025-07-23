@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvo330wtvka2c"
-path="res://.godot/imported/Slime.png-425160fbcc43efec8623eee5e0639497.ctex"
+uid="uid://33tkbhi5gk34"
+path="res://.godot/imported/Grass-01.png-9b66997b5bf297d6f041b795df355aab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Slime.png"
-dest_files=["res://.godot/imported/Slime.png-425160fbcc43efec8623eee5e0639497.ctex"]
+source_file="res://Assets/Sprites/Grass-01.png"
+dest_files=["res://.godot/imported/Grass-01.png-9b66997b5bf297d6f041b795df355aab.ctex"]
 
 [params]
 

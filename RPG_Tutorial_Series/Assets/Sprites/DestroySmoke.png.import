@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://33tkbhi5gk34"
-path="res://.godot/imported/Grass-01.png-9bf539fb59d17984e925653df49f9a39.ctex"
+uid="uid://dto3pgdg652fp"
+path="res://.godot/imported/DestroySmoke.png-877350b7c71bed72f2fb207b1f0ca155.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Grass-01.png"
-dest_files=["res://.godot/imported/Grass-01.png-9bf539fb59d17984e925653df49f9a39.ctex"]
+source_file="res://Assets/Sprites/DestroySmoke.png"
+dest_files=["res://.godot/imported/DestroySmoke.png-877350b7c71bed72f2fb207b1f0ca155.ctex"]
 
 [params]
 

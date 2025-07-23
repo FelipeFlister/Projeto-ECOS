@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djl7bphh6fneo"
-path="res://.godot/imported/AttackSprite01.png-62d2df5af60d40c1ba896d553d2797c5.ctex"
+uid="uid://c65e6nptulqxv"
+path="res://.godot/imported/dungeon_props.png-0c3c384709a8aab711edad04516d6300.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/AttackSprite01.png"
-dest_files=["res://.godot/imported/AttackSprite01.png-62d2df5af60d40c1ba896d553d2797c5.ctex"]
+source_file="res://Assets/Sprites/dungeon_props.png"
+dest_files=["res://.godot/imported/dungeon_props.png-0c3c384709a8aab711edad04516d6300.ctex"]
 
 [params]
 
