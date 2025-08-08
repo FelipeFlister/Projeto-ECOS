@@ -4,11 +4,15 @@ var attacking: bool = false
 
 @export var attack_sound: AudioStream
 
-@onready var walk: State = $"../Walk"
 @onready var idle: State = $"../Idle"
+@onready var walk: State = $"../Walk"
+
+@onready var hurt_box: HurtBox = %HurtBox
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var cut_anim: AnimationPlayer = $"../../Sprite2D/AttackEffect/AnimationPlayer"
 @onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
+
+
 func _ready() -> void:
 	pass
 	
@@ -23,13 +27,15 @@ func enter() -> void:
 	audio.play()
 	
 	attacking = true
-	pass
+	
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true
 	
 #O que acontece quando o jogador sai desse estado
 func exit() -> void:
 	animation_player.animation_finished.disconnect(end_attack)
 	attacking = false
-	pass
+	hurt_box.monitoring = false
 
 func process(_delta: float) -> State:
 	player.velocity = Vector2.ZERO

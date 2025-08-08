@@ -1,11 +1,14 @@
 class_name Player extends CharacterBody2D
 
+signal DirectionChanged(new_direction: Vector2)
+
 var cardinal_direction: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Player_State_Machine = $StateMachine
+
 
 func _ready() -> void:
 	state_machine.initialize(self)
@@ -30,6 +33,7 @@ func set_direction() -> bool:
 		return false
 	
 	cardinal_direction = new_dir
+	DirectionChanged.emit(new_dir)
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true	
 	
