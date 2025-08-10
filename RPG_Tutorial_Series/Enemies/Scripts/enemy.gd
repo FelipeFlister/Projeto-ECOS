@@ -1,27 +1,34 @@
-class_name Player extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 signal DirectionChanged(new_direction: Vector2)
+signal enemy_damaged()
 
-var cardinal_direction: Vector2 = Vector2.ZERO
-var direction: Vector2 = Vector2.ZERO
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var state_machine: Player_State_Machine = $StateMachine
+var hp: int = 3
 
+var cardinal_direction: Vector2 = Vector2.DOWN
+var direction: Vector2 = Vector2.ZERO
+var player: Player
+var invulnerable: bool = false
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+#@onready var hit_box = HitBox = $HitBox
+@onready var state_machine: EnemyStateMachine = $EnemyStateMachine
 
 func _ready() -> void:
-	PlayerManager.player = self
 	state_machine.initialize(self)
-
-func  _process(_delta: float) -> void:
-	direction = Input.get_vector("left", "right", "up", "down").normalized()
+	player = PlayerManager.player
 	
+func _process(_delta: float) -> void:
+	pass
+
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
-
-func set_direction() -> bool:
+	
+func set_direction(new_direction: Vector2) -> bool:
+	direction = new_direction
 	if direction == Vector2.ZERO:
 		return false
 		
