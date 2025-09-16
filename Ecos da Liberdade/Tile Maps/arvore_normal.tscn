@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://clopab1ihd1uc"]
+
+[ext_resource type="Texture2D" uid="uid://ba5m7px44b8h2" path="res://Tile Maps/Sprites/Novos/TopDownFantasy_Forest_v1/TopDownFantasy-Forest/Decorations/Decorations.png" id="1_dhayf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bonhf"]
+texture = ExtResource("1_dhayf")
+texture_region_size = Vector2i(32, 32)
+13:10/size_in_atlas = Vector2i(3, 5)
+13:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xxo6k"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_bonhf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i64bv"]
+size = Vector2(27, 22)
+
+[node name="Arvore_Normal" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 13, 0, 10, 0, 0, 0)
+tile_set = SubResource("TileSet_xxo6k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(13.5, 9)
+shape = SubResource("RectangleShape2D_i64bv")
