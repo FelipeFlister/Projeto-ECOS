@@ -1,0 +1,205 @@
+[gd_scene load_steps=12 format=4 uid="uid://bso1ms5dighyh"]
+
+[ext_resource type="Script" uid="uid://cc2kqd2htb7y" path="res://new_title_scene/banana_tagios.gd" id="1_6fi6o"]
+[ext_resource type="PackedScene" uid="uid://cq32mohonpsw3" path="res://Tile Maps/grass-tiles-01.tscn" id="1_iqxkd"]
+[ext_resource type="PackedScene" uid="uid://bi8crg3nv50qw" path="res://npc/npc.tscn" id="2_pppgw"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://Levels/player_spawn.tscn" id="3_g3jew"]
+[ext_resource type="Resource" uid="uid://bqfxxks18ou8u" path="res://npc/00_npcs/npc_02.tres" id="3_muntm"]
+[ext_resource type="PackedScene" uid="uid://dpenv0euqqlkg" path="res://npc/npc_behavior_patrol.tscn" id="4_rbhc8"]
+[ext_resource type="PackedScene" uid="uid://dyhn3j7qk4dqw" path="res://npc/patrol_location.tscn" id="5_pjyuj"]
+[ext_resource type="Texture2D" uid="uid://cumgmv8bmuso0" path="res://logo_ecos.png" id="8_yka12"]
+
+[sub_resource type="Animation" id="Animation_dt7ym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qq4i3"]
+resource_name = "default"
+length = 5.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfnot"]
+_data = {
+&"RESET": SubResource("Animation_dt7ym"),
+&"default": SubResource("Animation_qq4i3")
+}
+
+[node name="TitleScene" type="Node2D"]
+script = ExtResource("1_6fi6o")
+
+[node name="grass-tiles-01" parent="." instance=ExtResource("1_iqxkd")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAGAAMAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAGAAMAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAGAAMAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAGAAMAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAHAAAAAAAEAAUAAAAEAAEAAAAEAAYAAAAFAAIAAAAEAAcAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAYAAAAGAAMAAAAFAAcAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAGAAMAAAAGAAcAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAGAAAAAAAHAAcAAAAEAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAGAAMAAAAIAAcAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAGAAMAAAAJAAcAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAFAAAAAAAKAAUAAAAEAAEAAAAKAAYAAAAHAAIAAAAKAAcAAAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAGAAMAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAGAAMAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAGAAMAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAGAAMAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAGAAMAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAgAAAAAAAAAAAABAP//AAAAAAAAAAABAAgAAAAAAAAAAAACAP//AAAAAAAAAAACAAgAAAAAAAAAAAADAP//AAAAAAAAAAADAAgAAAAAAAAAAAAEAP//AAAAAAAAAAAEAAgAAAAAAAAAAAAFAP//AAAAAAAAAAAFAAgAAAAAAAAAAAAGAP//AAAAAAAAAAAGAAgAAAAAAAAAAAAHAP//AAAAAAAAAAAHAAgAAAAEAAEAAAAIAP//AAAAAAAAAAAIAAgAAAAAAAAAAAAJAP//AAAAAAAAAAAJAAgAAAAAAAAAAAAKAP//AAAAAAAAAAAKAAgAAAAAAAAAAAALAP//AAAAAAAAAAALAAgAAAAAAAAAAAAMAP//AAAAAAAAAAAMAAgAAAAAAAAAAAANAP//AAAAAAAAAAANAAgAAAAAAAAAAAAOAP//AAAAAAAAAAAOAAgAAAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAGAAMAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAD+/wQAAAAFAAMAAAAQAAQAAAAHAAMAAAAHAAkAAAAEAAIAAAAFAAUAAAAAAAAAAAA=")
+
+[node name="PlayerSpawn" parent="grass-tiles-01" instance=ExtResource("3_g3jew")]
+position = Vector2(240, 135)
+
+[node name="NPC_NERO" parent="." instance=ExtResource("2_pppgw")]
+position = Vector2(329, 172)
+npc_resource = ExtResource("3_muntm")
+
+[node name="NpcBehaviorPatrol" parent="NPC_NERO" instance=ExtResource("4_rbhc8")]
+position = Vector2(-1, 0)
+walk_speed = 100.0
+
+[node name="PatrolLocation" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-85, 167)
+
+[node name="PatrolLocation2" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-85, 36)
+patrol_id = 1
+
+[node name="PatrolLocation7" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-182, 36)
+patrol_id = 2
+
+[node name="PatrolLocation3" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-184, -26)
+patrol_id = 3
+
+[node name="PatrolLocation4" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-348, -27)
+patrol_id = 4
+
+[node name="PatrolLocation5" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-348, 144)
+patrol_id = 5
+
+[node name="PatrolLocation6" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(198, 145)
+patrol_id = 6
+
+[node name="PatrolLocation8" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(201, -25)
+patrol_id = 7
+
+[node name="PatrolLocation9" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(11, -25)
+patrol_id = 8
+
+[node name="PatrolLocation10" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(4, 34)
+patrol_id = 9
+
+[node name="PatrolLocation11" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-85, 36)
+patrol_id = 10
+
+[node name="PatrolLocation12" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("5_pjyuj")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-86, 168)
+patrol_id = 11
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(12.04, 6.76)
+color = Color(0, 0, 0, 0.32549)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(218, 43)
+scale = Vector2(0.330565, 0.330565)
+texture = ExtResource("8_yka12")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Sprite2D2"]
+libraries = {
+&"": SubResource("AnimationLibrary_vfnot")
+}
+autoplay = "default"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Control"]
+
+[node name="ButtonNew" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 156.0
+offset_top = 117.0
+offset_right = 288.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Novo Jogo"
+
+[node name="ButtonContinue" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 156.0
+offset_top = 147.0
+offset_right = 288.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continuar"
+
+[node name="ButtonExit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 156.0
+offset_top = 177.0
+offset_right = 288.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sair"
