@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=4 uid="uid://dj7u82d1al4yv"]
+
+[ext_resource type="Script" uid="uid://c2mayusmuuk6r" path="res://title_scene/title_scene.gd" id="1_bsv7j"]
+[ext_resource type="AudioStream" uid="uid://cph6d67x0q2hx" path="res://title_scene/audio/waves.mp3" id="2_8dr1o"]
+[ext_resource type="AudioStream" uid="uid://bs7rsijo2pb3f" path="res://title_scene/audio/menu_focus.wav" id="3_taidq"]
+[ext_resource type="AudioStream" uid="uid://08aqunggwta1" path="res://title_scene/audio/menu_select.wav" id="4_8tmww"]
+[ext_resource type="PackedScene" uid="uid://cq32mohonpsw3" path="res://Tile Maps/grass-tiles-01.tscn" id="6_bsv7j"]
+[ext_resource type="PackedScene" uid="uid://co1lktcw8or1y" path="res://title_scene2/splash_scene_2.tscn" id="7_6bpqe"]
+[ext_resource type="Texture2D" uid="uid://cumgmv8bmuso0" path="res://logo_ecos.png" id="7_8dr1o"]
+[ext_resource type="PackedScene" uid="uid://dhr1wkvl1431s" path="res://title_scene/splash_scene.tscn" id="8_prkjw"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://Levels/player_spawn.tscn" id="9_ehia3"]
+
+[sub_resource type="Animation" id="Animation_dt7ym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qq4i3"]
+resource_name = "default"
+length = 5.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfnot"]
+_data = {
+&"RESET": SubResource("Animation_dt7ym"),
+&"default": SubResource("Animation_qq4i3")
+}
+
+[node name="TitleScene" type="Node2D"]
+script = ExtResource("1_bsv7j")
+music = ExtResource("2_8dr1o")
+button_focus_audio = ExtResource("3_taidq")
+button_press_audio = ExtResource("4_8tmww")
+
+[node name="grass-tiles-01" parent="." instance=ExtResource("6_bsv7j")]
+tile_map_data = PackedByteArray("AAD/////AAABAAIAAAD//wAAAAABAAIAAAD//wEAAAABAAIAAAD//wIAAAABAAIAAAD//wMAAAABAAIAAAD//wQAAAAGAAMAAAD//wUAAAABAAIAAAD//wYAAAABAAIAAAD//wcAAAABAAIAAAD//wgAAAABAAIAAAD//wkAAAABAAIAAAAAAP//AAABAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAAGAAMAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAAAAAcAAAABAAIAAAAAAAgAAAABAAIAAAAAAAkAAAABAAIAAAABAP//AAABAAIAAAABAAAAAAABAAIAAAABAAEAAAABAAIAAAABAAIAAAABAAIAAAABAAMAAAABAAIAAAABAAQAAAAGAAMAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAACAP//AAABAAIAAAACAAAAAAABAAIAAAACAAEAAAABAAIAAAACAAIAAAABAAIAAAACAAMAAAABAAIAAAACAAQAAAAGAAMAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAADAP//AAABAAIAAAADAAAAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAABAAIAAAADAAMAAAABAAIAAAADAAQAAAAGAAMAAAADAAUAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAAEAP//AAABAAIAAAAEAAAAAAABAAIAAAAEAAEAAAABAAIAAAAEAAIAAAABAAIAAAAEAAMAAAAFAAAAAAAEAAQAAAAHAAEAAAAEAAUAAAAEAAEAAAAEAAYAAAAFAAIAAAAEAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAFAP//AAABAAIAAAAFAAAAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAAFAAAAAAAFAAMAAAAHAAIAAAAFAAQAAAABAAIAAAAFAAUAAAABAAIAAAAFAAYAAAAGAAMAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAAGAAMAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAUAAAABAAIAAAAGAAYAAAAGAAMAAAAGAAcAAAABAAIAAAAGAAgAAAABAAIAAAAGAAkAAAABAAIAAAAHAP//AAAEAAEAAAAHAAAAAAAEAAEAAAAHAAEAAAAEAAEAAAAHAAIAAAAGAAIAAAAHAAMAAAABAAIAAAAHAAQAAAABAAIAAAAHAAUAAAABAAIAAAAHAAYAAAAGAAAAAAAHAAcAAAAEAAEAAAAHAAgAAAAEAAEAAAAHAAkAAAAEAAIAAAAIAP//AAABAAIAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAMAAAABAAIAAAAIAAQAAAABAAIAAAAIAAUAAAABAAIAAAAIAAYAAAAGAAMAAAAIAAcAAAABAAIAAAAIAAgAAAABAAIAAAAIAAkAAAABAAIAAAAJAP//AAABAAIAAAAJAAAAAAABAAIAAAAJAAEAAAABAAIAAAAJAAIAAAAHAAAAAAAJAAMAAAAFAAIAAAAJAAQAAAABAAIAAAAJAAUAAAABAAIAAAAJAAYAAAAGAAMAAAAJAAcAAAABAAIAAAAJAAgAAAABAAIAAAAJAAkAAAABAAIAAAAKAP//AAABAAIAAAAKAAAAAAABAAIAAAAKAAEAAAABAAIAAAAKAAIAAAABAAIAAAAKAAMAAAAHAAAAAAAKAAQAAAAFAAEAAAAKAAUAAAAEAAEAAAAKAAYAAAAHAAIAAAAKAAcAAAABAAIAAAAKAAgAAAABAAIAAAAKAAkAAAABAAIAAAALAP//AAABAAIAAAALAAAAAAABAAIAAAALAAEAAAABAAIAAAALAAIAAAABAAIAAAALAAMAAAABAAIAAAALAAQAAAAGAAMAAAALAAUAAAABAAIAAAALAAYAAAABAAIAAAALAAcAAAABAAIAAAALAAgAAAABAAIAAAALAAkAAAABAAIAAAAMAP//AAABAAIAAAAMAAAAAAABAAIAAAAMAAEAAAABAAIAAAAMAAIAAAABAAIAAAAMAAMAAAABAAIAAAAMAAQAAAAGAAMAAAAMAAUAAAABAAIAAAAMAAYAAAABAAIAAAAMAAcAAAABAAIAAAAMAAgAAAABAAIAAAAMAAkAAAABAAIAAAANAP//AAABAAIAAAANAAAAAAABAAIAAAANAAEAAAABAAIAAAANAAIAAAABAAIAAAANAAMAAAABAAIAAAANAAQAAAAGAAMAAAANAAUAAAABAAIAAAANAAYAAAABAAIAAAANAAcAAAABAAIAAAANAAgAAAABAAIAAAANAAkAAAABAAIAAAAOAP//AAABAAIAAAAOAAAAAAABAAIAAAAOAAEAAAABAAIAAAAOAAIAAAABAAIAAAAOAAMAAAABAAIAAAAOAAQAAAAGAAMAAAAOAAUAAAABAAIAAAAOAAYAAAABAAIAAAAOAAcAAAABAAIAAAAOAAgAAAABAAIAAAAOAAkAAAABAAIAAAAPAP//AAABAAIAAAAPAAAAAAABAAIAAAAPAAEAAAABAAIAAAAPAAIAAAABAAIAAAAPAAMAAAABAAIAAAAPAAQAAAAGAAMAAAAPAAUAAAABAAIAAAAPAAYAAAABAAIAAAAPAAcAAAABAAIAAAAPAAgAAAABAAIAAAAPAAkAAAABAAIAAAAHAP7/AAAEAAAAAAD+/wQAAAAFAAMAAAAQAAQAAAAHAAMAAAA=")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.516)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(210, 57)
+scale = Vector2(0.239844, 0.239844)
+texture = ExtResource("7_8dr1o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_vfnot")
+}
+autoplay = "default"
+
+[node name="ButtonNew" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 9.0
+offset_right = 66.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Novo Jogo"
+
+[node name="ButtonContinue" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 39.0
+offset_right = 66.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continuar"
+
+[node name="ButtonExit" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 69.0
+offset_right = 66.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sair"
+
+[node name="TextScreen" parent="CanvasLayer" instance=ExtResource("7_6bpqe")]
+
+[node name="SplashScene" parent="CanvasLayer" instance=ExtResource("8_prkjw")]
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("9_ehia3")]
+position = Vector2(240, 139)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 4

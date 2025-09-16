@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=3 uid="uid://co1lktcw8or1y"]
+
+[ext_resource type="Script" uid="uid://8vvhoa6r6i3t" path="res://title_scene2/text_screen.gd" id="1_amegu"]
+
+[sub_resource type="Animation" id="Animation_ujwc8"]
+resource_name = "Default"
+length = 5.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.525, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.65098, 0.176471, 0.290196, 0), Color(0.65098, 0.176471, 0.290196, 0), Color(0.65098, 0.176471, 0.290196, 0.364706)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8t4uh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.65098, 0.176471, 0.290196, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmley"]
+_data = {
+&"Default": SubResource("Animation_ujwc8"),
+&"RESET": SubResource("Animation_8t4uh")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_0yc6q"]
+font_size = 20
+outline_size = 1
+shadow_size = 10
+shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s3iyw"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_52b2c"]
+offsets = PackedFloat32Array(0, 0.949527)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sycvw"]
+gradient = SubResource("Gradient_52b2c")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="TextScreen" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_amegu")
+metadata/movie_file = "D:/00_Game Dev/Penumbra/Penumbra/01_MichaelGames/SplashScene/Render/MichaelGamesSplash.avi"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MichaelGamesLogo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MichaelGamesLogo"]
+libraries = {
+&"": SubResource("AnimationLibrary_vmley")
+}
+autoplay = "Default"
+movie_quit_on_finish = true
+
+[node name="Label" type="Label" parent="MichaelGamesLogo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -33.5
+offset_right = 77.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = " Seculo XIX
+Nigeria"
+label_settings = SubResource("LabelSettings_0yc6q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.65098, 0.176471, 0.290196, 1)
+material = SubResource("CanvasItemMaterial_s3iyw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -211.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sycvw")
